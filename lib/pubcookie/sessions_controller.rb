@@ -13,12 +13,10 @@ module Pubcookie
 
     module InstanceMethods
 
+      include Pubcookie::ControllerHelper
+
       def new_with_pubcookie
-        logger.debug "Handling login with pubcookie."
-        response.headers["Cache-control"] = "no-store, no-cache, must-revalidate"
-        response.headers["Expires"] = "Sat, 1 Jan 2000 01:01:01 GMT"
-        response.headers["Set-Cookie"] = "OnDemandKey=ondemand; path=/"
-        redirect_to (request.referer || '/')
+        handle_pubcookie_ondemand
       end
 
       # TODO: remove this dependency on apache for logout redirect?

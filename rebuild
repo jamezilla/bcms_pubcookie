@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+`gem build bcms_pubcookie.gemspec --verbose`
+gems = Dir.glob("bcms_pubcookie-*.gem")
+gems.sort!.reverse!
+puts "Installing: " + gems[0]
+`gem install #{ gems[0] }`
+
+`touch ../dxarts-web/tmp/restart.txt`
+#`tail -f ~/src/dxarts/log/development.log`

@@ -1,10 +1,9 @@
 module Pubcookie
-  module User
+  module UserExtensions
 
     # Called when this module is included on the given class.
     def self.included(base)
       base.extend(ClassMethods)
-      Rails.logger.info("++ USER INCLUDED ++: " + base.class_name)
     end
 
     module ClassMethods
@@ -38,7 +37,5 @@ module Pubcookie
   end
 end
 
-
-User.send(:include, Pubcookie::User)
-Rails.logger.info("++ USER LOADED ++")
+User.send(:include, Pubcookie::UserExtensions)
 

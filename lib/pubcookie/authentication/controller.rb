@@ -14,23 +14,24 @@ module Pubcookie
       # Each instance of the controller will gain these methods.
       module InstanceMethods
 
+        include Pubcookie::ControllerHelper
+
         protected
 
         # If the user is not logged in, this will be set to the guest
         # user, which represents a public user, who will likely have
         # more limited permissions
         def current_user_with_pubcookie
-          @current_user ||= (login_from_pubcookie || User.guest)
+          @current_user ||= begin
+            User.current = (login_from_pubcookie || User.guest)
+          end
         end
 
         def access_denied_with_pubcookie
           respond_to do |format|
             format.html do
-              logger.debug 'Setting OnDemandKey cookie'
-              response.headers["Cache-control"] = "no-store, no-cache, must-revalidate"
-              response.headers["Expires"] = "Sat, 1 Jan 2000 01:01:01 GMT"
-              response.headers["Set-Cookie"] = "OnDemandKey=ondemand; path=/"
-              redirect_to request.request_uri
+              # not sure this is the right thing to do...
+              handle_pubcookie_ondemand
             end
           end
         end
@@ -40,9 +41,13 @@ module Pubcookie
         # Attempts to set the current user based on the
         # HTTP_AUTHORIZATION variable set by pubcookie.
         def login_from_pubcookie
-          logger.debug 'Attempting to login using pubcookie'
+          logger.debug 'Attempting to login using pubcookie (2)'
           if login_id = parse_http_authorization
-            return User.find_or_create_by_login(login_id)
+            begin
+              return User.find_by_login(login_id)
+            rescue RecordNotFound
+              redirect_to '/system/access_denied'
+            end
           else
             return nil
           end
