@@ -18,20 +18,23 @@ module Pubcookie
 
         protected
 
-        # If the user is not logged in, this will be set to the guest
-        # user, which represents a public user, who will likely have
-        # more limited permissions
+        # override the standard current_user
+        #   If the user is not logged in, this will be set to the guest
+        #   user, which represents a public user, who will likely have
+        #   more limited permissions
         def current_user_with_pubcookie
           @current_user ||= begin
             User.current = (login_from_pubcookie || User.guest)
           end
         end
 
+        # override the standard access_denied
         def access_denied_with_pubcookie
           respond_to do |format|
             format.html do
+              # logger.debug "--- ACCESS DENIED (pubcookie)"
               # not sure this is the right thing to do...
-              handle_pubcookie_ondemand
+              handle_pubcookie_ondemand(request.url)
             end
           end
         end
@@ -41,11 +44,14 @@ module Pubcookie
         # Attempts to set the current user based on the
         # HTTP_AUTHORIZATION variable set by pubcookie.
         def login_from_pubcookie
-          logger.debug 'Attempting to login using pubcookie (2)'
+          # logger.debug '--- Attempting to login using pubcookie'
           if login_id = parse_http_authorization
             begin
               return User.find_by_login(login_id)
             rescue RecordNotFound
+              # you should only get here if the user has a valid
+              # pubcookie login, but isn't provisioned in the BCMS
+              # users table"
               redirect_to '/system/access_denied'
             end
           else
