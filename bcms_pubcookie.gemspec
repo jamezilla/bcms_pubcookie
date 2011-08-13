@@ -1,7 +1,7 @@
 SPEC = Gem::Specification.new do |spec| 
   spec.name = "bcms_pubcookie"
   spec.rubyforge_project = spec.name
-  spec.version = "0.2.0"
+  spec.version = "0.2.1"
   spec.summary = "A Pubcookie Module for BrowserCMS"
   spec.author = "James Hughes" 
   spec.email = "james@virtualjames.com" 

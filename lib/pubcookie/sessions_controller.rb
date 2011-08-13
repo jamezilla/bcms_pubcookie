@@ -1,3 +1,5 @@
+require 'browsercms'
+
 module Pubcookie
 
   # Extends the core SessionController to properly destroy the local
