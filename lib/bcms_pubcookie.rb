@@ -1,3 +1,4 @@
+require 'bcms_pubcookie/engine'
 require 'browsercms'
 
 require 'pubcookie/controller_helper.rb'
