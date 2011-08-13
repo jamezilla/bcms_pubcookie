@@ -1,6 +1,5 @@
 require 'browsercms'
 
-require 'bcms_pubcookie/routes.rb'
 require 'pubcookie/controller_helper.rb'
 require 'pubcookie/authentication/controller.rb'
 require 'pubcookie/sessions_controller.rb'
