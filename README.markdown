@@ -5,11 +5,12 @@ This is a [BrowserCMS 3.3.x](https://github.com/browsermedia/browsercms) module 
 standard BrowserCMS authentication and login.
 
 Prerequisites:
-* Apache
-* [Passenger](http://www.modrails.com/)
-* [Pubcookie Apache Module](http://www.pubcookie.org/docs/install-mod_pubcookie.html)
-* [Rails 3.x](http://rubyonrails.org/)
-* [BrowserCMS 3.3.x](https://github.com/browsermedia/browsercms)
+
+*   Apache
+*   [Passenger](http://www.modrails.com/)
+*   [Pubcookie Apache Module](http://www.pubcookie.org/docs/install-mod_pubcookie.html)
+*   [Rails 3.x](http://rubyonrails.org/)
+*   [BrowserCMS 3.3.x](https://github.com/browsermedia/browsercms)
 
 ## Installation
 
