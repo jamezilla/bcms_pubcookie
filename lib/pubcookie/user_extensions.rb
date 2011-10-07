@@ -13,24 +13,21 @@ module Pubcookie
         return user
       end
 
-      def create_from_netid(netid, options={})
+      def create_from_netid(netid, email)
         # create a bogus password - pubcookie won't use it
         password = make_token
-
-        # set the domain for the email address - SITE_DOMAIN is defined in
-        # the relevant config/environments/* file
-        domain = options.delete(:domain) || SITE_DOMAIN
 
         params = {
           :login => netid,
           :first_name=> "",
           :last_name => "",
-          :email => "#{ netid }@#{ domain }",
+          :email => email,
           :password => password,
           :password_confirmation => password
         }
-        params.merge!(options)
+
         return create(params)
+
       end
     end
 
