@@ -47,7 +47,6 @@ module Pubcookie
         # Attempts to set the current user based on the
         # HTTP_AUTHORIZATION variable set by pubcookie.
         def login_from_pubcookie
-          # logger.debug '--- Attempting to login using pubcookie'
           if login_id = parse_http_authorization
             begin
               return User.find_by_login(login_id)
@@ -67,7 +66,7 @@ module Pubcookie
         # login information encoded in Base64.
         def parse_http_authorization
           if !request.env['HTTP_AUTHORIZATION'].nil?
-            return request.env['HTTP_AUTHORIZATION'].split(' ')[1].unpack("m").to_s.split(':')[0]
+            return request.env['HTTP_AUTHORIZATION'].split(' ')[1].unpack("m")[0].split(':')[0]
           else
             return nil
           end
