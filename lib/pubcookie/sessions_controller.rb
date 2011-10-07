@@ -1,4 +1,4 @@
-require 'browsercms'
+require 'pubcookie/controller_helper'
 
 module Pubcookie
 
@@ -37,5 +37,3 @@ module Pubcookie
   end
 
 end
-  
-Cms::SessionsController.send(:include, Pubcookie::SessionsController)

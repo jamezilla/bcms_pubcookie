@@ -1,6 +1,4 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 
-gem 'rails', '3.0.9'
-gem 'sqlite3'
-gem "browsercms"
+# Specify your gem's dependencies in bcms_pubcookie.gemspec
 gemspec

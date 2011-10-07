@@ -37,5 +37,3 @@ module Pubcookie
   end
 end
 
-User.send(:include, Pubcookie::UserExtensions)
-

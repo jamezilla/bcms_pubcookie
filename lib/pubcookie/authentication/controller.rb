@@ -1,6 +1,9 @@
 #
 # Augments the core Cms::Controllers to add Pubcookie Authentication behavior.
 #
+
+require 'pubcookie/controller_helper'
+
 module Pubcookie
   module Authentication
     module Controller
@@ -40,7 +43,7 @@ module Pubcookie
         end
 
         private
-        
+
         # Attempts to set the current user based on the
         # HTTP_AUTHORIZATION variable set by pubcookie.
         def login_from_pubcookie
@@ -73,6 +76,4 @@ module Pubcookie
     end
   end
 end
-
-Cms::Authentication::Controller.send(:include, Pubcookie::Authentication::Controller)
 

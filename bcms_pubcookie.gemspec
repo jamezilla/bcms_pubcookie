@@ -1,23 +1,24 @@
-SPEC = Gem::Specification.new do |spec| 
-  spec.name = "bcms_pubcookie"
-  spec.rubyforge_project = spec.name
-  spec.version = "0.2.1"
-  spec.summary = "A Pubcookie Module for BrowserCMS"
-  spec.author = "James Hughes" 
-  spec.email = "james@virtualjames.com" 
-  spec.homepage = "http://www.virtualjames.com" 
-  # spec.files += Dir["app/**/*"]
-  # spec.files += Dir["db/migrate/*.rb"]
-  # spec.files -= Dir["db/migrate/*_browsercms_*.rb"]
-  # spec.files -= Dir["db/migrate/*_load_seed_data.rb"]
-  spec.files += Dir["lib/bcms_pubcookie.rb"]
-  spec.files += Dir["lib/bcms_pubcookie/*.rb"]
-  spec.files += Dir["lib/pubcookie/*.rb"]
-  spec.files += Dir["lib/pubcookie/**/*.rb"]
-  spec.files += Dir["rails/init.rb"]
-  spec.files += Dir["public/bcms/pubcookie/**/*"]
-  spec.require_paths = ["lib"]
-  spec.has_rdoc = false
-  spec.extra_rdoc_files = ["README"]
-  spec.add_dependency(%q<browsercms>, [">= 3.1.2"])
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path("../lib", __FILE__)
+
+Gem::Specification.new do |s|
+  s.name        = "bcms_pubcookie"
+  s.version     = "0.3.0"
+  s.authors     = ["James Hughes"]
+  s.email       = ["james@virtualjames.com"]
+  s.homepage    = "http://github.com/jamezilla/bcms_pubcookie"
+  s.summary     = %q{TODO: Write a gem summary}
+  s.description = %q{TODO: Write a gem description}
+
+  s.rubyforge_project = "bcms_pubcookie"
+
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.require_paths = ["lib"]
+
+  # specify any dependencies here; for example:
+  # s.add_development_dependency "rspec"
+  s.add_runtime_dependency "rails", "~> 3.0"
+  s.add_runtime_dependency "browsercms", "~> 3.3"
 end
