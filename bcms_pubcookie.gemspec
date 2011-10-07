@@ -7,8 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ["James Hughes"]
   s.email       = ["james@virtualjames.com"]
   s.homepage    = "http://github.com/jamezilla/bcms_pubcookie"
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = "A Pubcookie module for BrowserCMS"
 
   s.rubyforge_project = "bcms_pubcookie"
 
