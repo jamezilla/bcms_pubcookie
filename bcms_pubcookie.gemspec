@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "bcms_pubcookie"
-  s.version     = "0.3.2"
+  s.version     = "0.3.3"
   s.authors     = ["James Hughes"]
   s.email       = ["james@virtualjames.com"]
   s.homepage    = "http://github.com/jamezilla/bcms_pubcookie"
@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.files += Dir["*"]
   s.files -= Dir["lib"]
   s.files -= Dir["pkg"]
+  s.files += Dir["app/**/*.rb"]
   s.files += Dir["lib/**/*.rb"]
   s.files += Dir["lib/**/.gitkeep"]
   s.files -= Dir["lib/tasks/build_gem.rake"]
