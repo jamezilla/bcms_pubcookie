@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "bcms_pubcookie"
-  s.version     = "0.3.1"
+  s.version     = "0.3.2"
   s.authors     = ["James Hughes"]
   s.email       = ["james@virtualjames.com"]
   s.homepage    = "http://github.com/jamezilla/bcms_pubcookie"

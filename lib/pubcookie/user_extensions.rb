@@ -4,6 +4,17 @@ module Pubcookie
     # Called when this module is included on the given class.
     def self.included(base)
       base.extend(ClassMethods)
+      base.send(:include, InstanceMethods)
+    end
+
+    module InstanceMethods
+      
+      def set_fake_password!
+        fake_password              = self.class.make_token
+        self.password              = fake_password
+        self.password_confirmation = fake_password
+      end
+
     end
 
     module ClassMethods
